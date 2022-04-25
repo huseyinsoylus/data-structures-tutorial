@@ -77,6 +77,9 @@ ________________________________________________________________________________
 #include <stdlib.h>
 //___________________________________________________________________________________
 
+//--------------------------------------Define Area---------------------------------
+
+//___________________________________________________________________________________
 
 //-------------------------------------Global Variables------------------------------
 char * giv_girdi;
@@ -100,20 +103,43 @@ int main(int argc, char * argv[])
     giv_girdi = malloc(sizeof(char)*10);
     printf("Veri yapıları ve algoritmalar eğitim programına hoşgeldiniz.\n\n");
     printf("Eğitim Listesi\n--------------------------------------------\n1-)Bağlantılı Liste\n2-)Çift Yönlü Bağlantılı Liste\n3-)Çevrimli Bağlantılı liste\n4-)Yığıt\n5-)Kuyruk\n\n");
-    printf("Hangi eğitime girmek istiyorsanız sıra numarasını yazınız.\nEğitimi sonlandırmak için 0 yazınız.\n");
-    //printf("%c",giv_girdi);
+    printf("Hangi eğitime girmek istiyorsanız sıra numarasını yazınız.\nEğitimi sonlandırmak için exit - Exit yazınız.\n");
     
-    scanf("%s",giv_girdi);
-    //printf("%s",giv_girdi);
-    if(ifp_similarity_check(giv_girdi,"1"))
+    while(1)
     {
-        printf("Bağlantılı Liste Eğitimine Hoşgeldiniz.\n");
+	printf("Eğitim Girişi:");
+	scanf("%s",giv_girdi);
+	//printf("%s",giv_girdi);
+	if(ifp_is_it_equal(giv_girdi,"1"))
+	{
+	    printf("Bağlantılı Liste Eğitimine Hoşgeldiniz.\n");
+	}
+	else if(ifp_is_it_equal(giv_girdi,"2"))
+	{
+	    printf("Çift Bağlantılı Liste Eğitimine Hoşgeldiniz.\n");
+	}
+	else if(ifp_is_it_equal(giv_girdi,"3"))
+	{
+	    printf("Çevrimli Liste Eğitimine Hoşgeldiniz.\n");
+	}
+	else if(ifp_is_it_equal(giv_girdi,"4"))
+	{
+	    printf("Yığıt Eğitimine Hoşgeldiniz.\n");
+	}
+	else if(ifp_is_it_equal(giv_girdi,"5"))
+	{
+	    printf("Kuyruk Liste Eğitimine Hoşgeldiniz.\n");
+	}
+	else if(ifp_is_it_equal(giv_girdi,"exit") || ifp_is_it_equal(giv_girdi,"Exit"))
+	{
+	    printf("Programdan çıkılıyor. İyi günler dileriz.\n");
+	    _Exit(0);
+	}
+	else
+	{
+	    printf("Giriş yaptığınız değer geçersizdir.\n");
+	}
     }
-    
-    
-    
-    
-    
     
 
 }
