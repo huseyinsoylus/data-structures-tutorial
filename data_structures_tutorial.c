@@ -86,7 +86,10 @@ char * giv_girdi;
 
 
 //----------------------------------Function Declare Area----------------------------
-
+int ifp_is_it_equal(char * expression1, char * expression2)
+{
+    return !strcmp(expression1,expression2);
+}
 
 //___________________________________________________________________________________
 
@@ -98,8 +101,14 @@ int main(int argc, char * argv[])
     printf("Veri yapıları ve algoritmalar eğitim programına hoşgeldiniz.\n\n");
     printf("Eğitim Listesi\n--------------------------------------------\n1-)Bağlantılı Liste\n2-)Çift Yönlü Bağlantılı Liste\n3-)Çevrimli Bağlantılı liste\n4-)Yığıt\n5-)Kuyruk\n\n");
     printf("Hangi eğitime girmek istiyorsanız sıra numarasını yazınız.\nEğitimi sonlandırmak için 0 yazınız.\n");
-    printf("Girdi bekleniyor:");
     //printf("%c",giv_girdi);
+    
+    scanf("%s",giv_girdi);
+    //printf("%s",giv_girdi);
+    if(ifp_similarity_check(giv_girdi,"1"))
+    {
+        printf("Bağlantılı Liste Eğitimine Hoşgeldiniz.\n");
+    }
     
     
     
