@@ -75,14 +75,11 @@ ________________________________________________________________________________
 #include<stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <ctype.h>
 //___________________________________________________________________________________
 
 
-
-
 //-------------------------------------Global Variables------------------------------
-
+char giv_girdi=-1;
 //___________________________________________________________________________________
 
 
@@ -90,12 +87,24 @@ ________________________________________________________________________________
 
 //----------------------------------Function Declare Area----------------------------
 
+
 //___________________________________________________________________________________
 
 
 
 int main(int argc, char * argv[])
 {
-
+    printf("Veri yapıları ve algoritmalar eğitim programına hoşgeldiniz.\n\n");
+    printf("Eğitim Listesi\n--------------------------------------------\n1-)Bağlantılı Liste\n2-)Çift Yönlü Bağlantılı Liste\n3-)Çevrimli Bağlantılı liste\n4-)Yığıt\n5-)Kuyruk\n\n");
+    printf("Hangi eğitime girmek istiyorsanız sıra numarasını yazınız.\nEğitimi sonlandırmak için 0 yazınız.\n");
+    printf("Girdi bekleniyor:");
+    giv_girdi = getchar();
+    //printf("%c",giv_girdi);
+    
+    
+    
+    
+    
+    
 
 }
