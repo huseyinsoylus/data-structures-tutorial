@@ -162,6 +162,15 @@ void vf_print_linked_list()
 }
 //___________________________________________________________________________________
 
+//----------------------------------Print Linked List Functions----------------------
+void vf_print_linll_info()
+{
+    printf("Bilgilendirme:\n");
+    printf("Her düğüm yalnızca bir sonraki düğümün adresi barındırır bunun sonucu olarak tek yönde okuma yapılabilir, bir düğümden önceki düğüme erişilemez. Düğüm yapısı C programlama dilinde struct kullanılarak yapılır.\n");
+    vfp_print_window_size_ch('-',sw_cmd_width);
+
+}
+//___________________________________________________________________________________
 
 int main(int argc, char * argv[])
 {
@@ -201,7 +210,7 @@ int main(int argc, char * argv[])
 	        
 	        if(ifp_is_it_equal(cp_bagli_liste_giris,"1"))
 		{
-		    
+		    vf_print_linll_info();
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"2"))
 		{
