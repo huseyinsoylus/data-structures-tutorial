@@ -153,7 +153,8 @@ int main(int argc, char * argv[])
     while(1)
     {
 	printf("Eğitim Girişi:");
-	scanf("%s",giv_girdi);
+	fflush(stdin);
+	fgets(giv_girdi,10,stdin);
 	//printf("%s",giv_girdi);
 	if(ifp_is_it_equal(giv_girdi,"1"))
 	{
