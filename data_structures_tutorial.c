@@ -155,7 +155,7 @@ void vf_print_linked_list_menu()
     
     printf("Bağlantılı Liste Eğitimine Hoşgeldiniz.\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
-    printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur(10)\n3-)Eleman Ekle\n4-)Eleman Sil\n5-)Eleman Güncelle\n6-)Listeyi Göster\n7-)Listeyi Sil\n8-)Bir Üst Menüye Dön\n");
+    printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur(10)\n3-)Eleman Ekle(15)\n4-)Eleman Sil\n5-)Eleman Güncelle\n6-)Listeyi Göster\n7-)Listeyi Sil\n8-)Bir Üst Menüye Dön\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
     
     vfp_color_change("");
@@ -191,7 +191,7 @@ void vfp_create_linked_list_rnd(struct linked_list *root,int iv_list_lenght){
         perror("No memory is allocated for the linked list to be created\n");
     }  
 
-    struct linked_list * tmp = (linked_list *)malloc(sizeof(struct linked_list *));
+    struct linked_list * tmp = malloc(sizeof(struct linked_list *));
     if(tmp == NULL){
         perror("Error creating memory for variable tmp\n"); //Bellek olusturma kontrolu.
     }
@@ -201,7 +201,7 @@ void vfp_create_linked_list_rnd(struct linked_list *root,int iv_list_lenght){
 
         for(int i = 1;i<iv_list_lenght;i++){
     
-        struct linked_list *sp_new_node = (linked_list *)malloc(sizeof(struct linked_list *));
+        struct linked_list *sp_new_node = malloc(sizeof(struct linked_list *));
         tmp->nextptr = sp_new_node;
         sp_new_node->value = rand() % 50;
         tmp = sp_new_node; 
@@ -224,7 +224,7 @@ void vfp_print_linked_list(struct linked_list * root){
         perror("The linked list is empty.\n");
     }  
 
-	struct linked_list * tmp = (linked_list *)malloc(sizeof(struct linked_list *));
+	struct linked_list * tmp = malloc(sizeof(struct linked_list *));
     if(tmp == NULL){
         perror("Error creating memory for pointer tmp\n"); //Bellek olusturma kontrolu.
     }
@@ -237,6 +237,25 @@ void vfp_print_linked_list(struct linked_list * root){
 
 	}
     vfp_print_window_size_ch('-',sw_cmd_width);
+}
+//___________________________________________________________________________________
+
+//-------------------------------Add Linked List-----------------------------------
+
+void vfp_add_linked_list(struct linked_list * root,int add_value)
+{
+    struct linked_list *newNode;
+    newNode = malloc(sizeof(struct linked_list));
+    newNode->value = add_value;
+    newNode->nextptr = NULL;
+    
+    struct linked_list *temp = root;
+    while(temp->nextptr != NULL){
+    temp = temp->nextptr;
+    }
+
+    temp->nextptr = newNode;
+    
 }
 //___________________________________________________________________________________
 
@@ -267,7 +286,7 @@ int main(int argc, char * argv[])
 	{
 	//printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur\n3-)Eleman Ekle\n4-)Eleman Sil\n5-)Eleman Güncelle\n6-)Listeyi Göster\n7-)Listeyi Sil\n8-)Bir Üst Menüye Dön\n");
 	    
-	    struct linked_list * sp_list = malloc(sizeof(struct linked_list*));
+	    struct linked_list * sp_list = (struct linked_list*)malloc(sizeof(struct linked_list*));
 	    
 	    vf_print_linked_list_menu();
 	    char * cp_bagli_liste_giris = (char*)malloc(sizeof(char)*10);
@@ -292,7 +311,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"3"))
 		{
-		    
+		    vfp_add_linked_list(sp_list,15);
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"4"))
 		{
