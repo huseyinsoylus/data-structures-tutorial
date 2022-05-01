@@ -259,6 +259,33 @@ void vfp_add_linked_list(struct linked_list * root,int add_value)
 }
 //___________________________________________________________________________________
 
+
+//-------------------------------Delete Linked List-----------------------------------
+// Delete a node
+void vfp_delete_linked_elements(struct linked_list * head_ref, int key) {
+  struct linked_list *temp = head_ref, *prev;
+
+  if (temp != NULL && temp->value == key) {
+  head_ref = temp->nextptr;
+  free(temp);
+  return;
+  }
+  // Find the key to be deleted
+  while (temp != NULL && temp->value != key) {
+  prev = temp;
+  temp = temp->nextptr;
+  }
+
+  // If the key is not present
+  if (temp == NULL) return;
+
+  // Remove the node
+  prev->nextptr = temp->nextptr;
+
+  free(temp);
+}
+//___________________________________________________________________________________
+
 //____________________________________LINKED LIST ALL________________________________
 int main(int argc, char * argv[])
 {
@@ -315,7 +342,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"4"))
 		{
-		    
+		    vfp_delete_linked_elements(sp_list,15);
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"5"))
 		{
