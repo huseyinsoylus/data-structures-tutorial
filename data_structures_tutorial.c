@@ -182,6 +182,45 @@ struct linked_list
 }*linked_root;
 //___________________________________________________________________________________
 
+
+//-------------------------------Create Random Linked List----------------------------
+
+void vfp_create_linked_list_rnd(struct node *root, int iv_list_lenght){
+
+    if(root == NULL){
+        printf("Olusuturulacak bagli liste icin bellek ayrilmamis");
+        exit(1);
+    }  
+
+    struct node * tmp = malloc(sizeof(struct node *));
+    if(tmp == NULL){
+        printf("tmp degiskeni icin bellek olusturma hatasi\n"); //Bellek olusturma kontrolu.
+        exit(1);
+    }
+
+    tmp = root;
+    
+    if(root != NULL && root->nextptr == NULL){
+
+        for(int i = 1;i<=iv_list_lenght;i++){
+    
+        struct node * sp_new_node = malloc(sizeof(struct node *));
+        tmp->nextptr = sp_new_node;
+        sp_new_node->value = i*5;
+        tmp = sp_new_node; 
+        }
+
+    }
+    else{
+    
+        printf("Root pointeri bos ya da root bir liste su anda ici bos degil!!");
+    }   
+}
+//___________________________________________________________________________________
+
+
+
+
 //____________________________________LINKED LIST ALL________________________________
 int main(int argc, char * argv[])
 {
