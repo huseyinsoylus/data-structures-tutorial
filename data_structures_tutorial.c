@@ -155,7 +155,7 @@ void vf_print_linked_list()
     
     printf("Bağlantılı Liste Eğitimine Hoşgeldiniz.\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
-    printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur\n3-)Rasgele Bağlantılı Liste Oluştur\n4-)Eleman Ekle\n5-)Eleman Sil\n6-)Eleman Güncelle\n7-)Listeyi Göster\n8-)Listeyi Sil\n");
+    printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur\n3-)Rasgele Bağlantılı Liste Oluştur\n4-)Eleman Ekle\n5-)Eleman Sil\n6-)Eleman Güncelle\n7-)Listeyi Göster\n8-)Listeyi Sil\n9-)Ana Menüye Dön\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
     
     vfp_color_change("");
@@ -186,7 +186,65 @@ int main(int argc, char * argv[])
 	
 	if(ifp_is_it_equal(giv_girdi,"1"))
 	{
-	    printf("Bağlantılı Liste Eğitimine Hoşgeldiniz.\n");
+	    vf_print_linked_list();
+	    char * cp_bagli_liste_giris = (char*)malloc(sizeof(char)*10);
+	    
+	    while(1)
+	    {
+	    	printf("Seçeneği girin:");
+	        fflush(stdin);
+	        fgets(cp_bagli_liste_giris,10,stdin);
+	        vfp_delete_enter_char(cp_bagli_liste_giris);
+	        
+		/*print '-'*/
+	        vfp_print_window_size_ch('-',sw_cmd_width);
+	        
+	        if(ifp_is_it_equal(cp_bagli_liste_giris,"1"))
+		{
+		    
+		}
+		else if(ifp_is_it_equal(cp_bagli_liste_giris,"2"))
+		{
+		    
+		}
+		else if(ifp_is_it_equal(cp_bagli_liste_giris,"3"))
+		{
+		    
+		}
+		else if(ifp_is_it_equal(cp_bagli_liste_giris,"4"))
+		{
+		    
+		}
+		else if(ifp_is_it_equal(cp_bagli_liste_giris,"5"))
+		{
+		    
+		}
+		else if(ifp_is_it_equal(cp_bagli_liste_giris,"6"))
+		{
+		    
+		}
+		else if(ifp_is_it_equal(cp_bagli_liste_giris,"7"))
+		{
+		    
+		}
+		else if(ifp_is_it_equal(cp_bagli_liste_giris,"8"))
+		{
+		    
+		}
+		else if(ifp_is_it_equal(cp_bagli_liste_giris,"8"))
+		{
+		    
+		}
+		else if(ifp_is_it_equal(cp_bagli_liste_giris,"exit") || ifp_is_it_equal(cp_bagli_liste_giris,"Exit"))
+		{
+		    printf("Programdan çıkılıyor. İyi günler dileriz.\n");
+		    _Exit(0);
+		}
+		else
+		{
+		    printf("Giriş yaptığınız değer geçersizdir.\n");
+		}
+	    }
 	}
 	else if(ifp_is_it_equal(giv_girdi,"2"))
 	{
