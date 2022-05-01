@@ -186,7 +186,7 @@ struct linked_list
 //-------------------------------Create Random Linked List----------------------------
 
 void vfp_create_linked_list_rnd(struct linked_list *root,int iv_list_lenght){
-    root = malloc(sizeof(struct linked_list *));
+    
     if(root == NULL){
         perror("No memory is allocated for the linked list to be created\n");
         exit(1);
@@ -219,8 +219,28 @@ void vfp_create_linked_list_rnd(struct linked_list *root,int iv_list_lenght){
 }
 //___________________________________________________________________________________
 
+//-------------------------------Print Linked List-----------------------------------
+void vfp_print_linked_list(struct linked_list * root){
 
+    if(root == NULL){
+        perror("The linked list is empty.\n");
+    }  
 
+	struct linked_list * tmp = malloc(sizeof(struct linked_list *));
+    if(tmp == NULL){
+        perror("Error creating memory for pointer tmp\n"); //Bellek olusturma kontrolu.
+    }
+    tmp = root;
+    int i=1;
+	while(tmp != NULL){
+	    printf("%d. Deger = %5d\n",i,tmp->value);
+	    tmp=tmp->nextptr;
+        i++;
+
+	}
+    vfp_print_window_size_ch('-',sw_cmd_width);
+}
+//___________________________________________________________________________________
 
 //____________________________________LINKED LIST ALL________________________________
 int main(int argc, char * argv[])
@@ -235,6 +255,7 @@ int main(int argc, char * argv[])
     
     while(1)
     {
+        //printf("1-)Bağlantılı Liste\n2-)Çift Yönlü Bağlantılı Liste\n3-)Yığıt\n4-)Kuyruk\n5-)İkili Arama Ağacı\n\n");
 	printf("Eğitim Girişi:");
 	fflush(stdin);
 	fgets(giv_girdi,10,stdin);
@@ -247,6 +268,9 @@ int main(int argc, char * argv[])
 	if(ifp_is_it_equal(giv_girdi,"1"))
 	{
 	//printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur\n3-)Eleman Ekle\n4-)Eleman Sil\n5-)Eleman Güncelle\n6-)Listeyi Göster\n7-)Listeyi Sil\n8-)Bir Üst Menüye Dön\n");
+	    
+	    struct linked_list * sp_list = malloc(sizeof(struct linked_list*));
+	    
 	    vf_print_linked_list_menu();
 	    char * cp_bagli_liste_giris = (char*)malloc(sizeof(char)*10);
 	    
@@ -266,7 +290,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"2"))
 		{
-		    vfp_create_linked_list_rnd(linked_root,5);
+		    vfp_create_linked_list_rnd(sp_list,10);
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"3"))
 		{
@@ -282,7 +306,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"6"))
 		{
-		    
+		    vfp_print_linked_list(sp_list);
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"7"))
 		{
