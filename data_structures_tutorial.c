@@ -189,19 +189,17 @@ void vfp_create_linked_list_rnd(struct linked_list *root,int iv_list_lenght){
     
     if(root == NULL){
         perror("No memory is allocated for the linked list to be created\n");
-        exit(1);
     }  
 
     struct linked_list * tmp = malloc(sizeof(struct linked_list *));
     if(tmp == NULL){
         perror("Error creating memory for variable tmp\n"); //Bellek olusturma kontrolu.
-        exit(1);
     }
 
     tmp = root;
     if(root != NULL && root->nextptr == NULL){
 
-        for(int i = 1;i<=iv_list_lenght;i++){
+        for(int i = 1;i<iv_list_lenght;i++){
     
         struct linked_list *sp_new_node = malloc(sizeof(struct linked_list *));
         tmp->nextptr = sp_new_node;
