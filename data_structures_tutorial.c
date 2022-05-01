@@ -85,6 +85,7 @@ ________________________________________________________________________________
 
 //-------------------------------------Global Variables------------------------------
 char * giv_girdi;
+struct winsize sw_cmd_width;
 //___________________________________________________________________________________
 
 
@@ -98,21 +99,20 @@ int ifp_is_it_equal(char * expression1, char * expression2)
 
 //___________________________________________________________________________________
 
-
-//----------------------------------Print Education Functions----------------------------
-void vf_print_education_list()
+//----------------------------------Print '-' Functions----------------------------
+void vfp_print_window_size_ch(char ch, struct winsize w)
 {
-    vfp_color_change("default");
-    printf("Eğitim Listesi\n");
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+    int iv_window_column = w.ws_col;
     
-    vfp_print_window_size_ch('-',sw_cmd_width);
-    printf("1-)Bağlantılı Liste\n2-)Çift Yönlü Bağlantılı Liste\n3-)Çevrimli Bağlantılı liste\n4-)Yığıt\n5-)Kuyruk\n\n");
-    printf("Hangi eğitime girmek istiyorsanız sıra numarasını yazınız.\nEğitimi sonlandırmak için exit - Exit yazınız.\n");
-    vfp_print_window_size_ch('-',sw_cmd_width);
+    for(int i = 0;i < iv_window_column; i++)
+    {
+        printf("%c",ch);
+    }
+    
+    printf("\n");
 }
 //___________________________________________________________________________________
-
-
 
 int main(int argc, char * argv[])
 {
