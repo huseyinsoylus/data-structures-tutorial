@@ -140,6 +140,15 @@ void vf_print_education_list()
 }
 //___________________________________________________________________________________
 
+//----------------------------------Are Char Strings Equal---------------------------
+void vfp_delete_enter_char(char * gets_input)
+{
+    int iv_lenght = strlen(gets_input);
+    gets_input[iv_lenght-1]='\0';
+}
+//___________________________________________________________________________________
+
+
 int main(int argc, char * argv[])
 {
     //Console clear
