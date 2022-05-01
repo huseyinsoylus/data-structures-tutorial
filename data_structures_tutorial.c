@@ -134,7 +134,7 @@ void vf_print_education_list()
     printf("Eğitim Listesi\n");
     
     vfp_print_window_size_ch('-',sw_cmd_width);
-    printf("1-)Bağlantılı Liste\n2-)Çift Yönlü Bağlantılı Liste\n3-)Çevrimli Bağlantılı liste\n4-)Yığıt\n5-)Kuyruk\n\n");
+    printf("1-)Bağlantılı Liste\n2-)Çift Yönlü Bağlantılı Liste\n3-)Yığıt\n4-)Kuyruk\n5-)İkili Arama Ağacı\n\n");
     printf("Hangi eğitime girmek istiyorsanız sıra numarasını yazınız.\nEğitimi sonlandırmak için exit - Exit yazınız.\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
 }
@@ -162,7 +162,7 @@ void vf_print_linked_list()
 }
 //___________________________________________________________________________________
 
-//----------------------------------Print Linked List Functions----------------------
+//----------------------------------Print Linked List Info Func----------------------
 void vf_print_linll_info()
 {
     printf("Bilgilendirme:\n");
@@ -195,6 +195,7 @@ int main(int argc, char * argv[])
 	
 	if(ifp_is_it_equal(giv_girdi,"1"))
 	{
+	//printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur\n3-)Rasgele Bağlantılı Liste Oluştur\n4-)Eleman Ekle\n5-)Eleman Sil\n6-)Eleman Güncelle\n7-)Listeyi Göster\n8-)Listeyi Sil\n9-)Bir Üst Menüye Dön\n");
 	    vf_print_linked_list();
 	    char * cp_bagli_liste_giris = (char*)malloc(sizeof(char)*10);
 	    
@@ -240,9 +241,9 @@ int main(int argc, char * argv[])
 		{
 		    
 		}
-		else if(ifp_is_it_equal(cp_bagli_liste_giris,"8"))
+		else if(ifp_is_it_equal(cp_bagli_liste_giris,"9"))
 		{
-		    
+		    break;	
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"exit") || ifp_is_it_equal(cp_bagli_liste_giris,"Exit"))
 		{
