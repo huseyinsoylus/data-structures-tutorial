@@ -147,8 +147,8 @@ int main(int argc, char * argv[])
     
     giv_girdi = malloc(sizeof(char)*10);
     printf("Veri yapıları ve algoritmalar eğitim programına hoşgeldiniz.\n\n");
-    printf("Eğitim Listesi\n--------------------------------------------\n1-)Bağlantılı Liste\n2-)Çift Yönlü Bağlantılı Liste\n3-)Çevrimli Bağlantılı liste\n4-)Yığıt\n5-)Kuyruk\n\n");
-    printf("Hangi eğitime girmek istiyorsanız sıra numarasını yazınız.\nEğitimi sonlandırmak için exit - Exit yazınız.\n");
+    
+    vf_print_education_list();
     
     while(1)
     {
