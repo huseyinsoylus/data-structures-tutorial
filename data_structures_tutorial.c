@@ -195,7 +195,7 @@ int main(int argc, char * argv[])
 	
 	if(ifp_is_it_equal(giv_girdi,"1"))
 	{
-	//printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur\n3-)Rasgele Bağlantılı Liste Oluştur\n4-)Eleman Ekle\n5-)Eleman Sil\n6-)Eleman Güncelle\n7-)Listeyi Göster\n8-)Listeyi Sil\n9-)Bir Üst Menüye Dön\n");
+	//printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur\n3-)Eleman Ekle\n4-)Eleman Sil\n5-)Eleman Güncelle\n6-)Listeyi Göster\n7-)Listeyi Sil\n8-)Bir Üst Menüye Dön\n");
 	    vf_print_linked_list();
 	    char * cp_bagli_liste_giris = (char*)malloc(sizeof(char)*10);
 	    
@@ -238,10 +238,6 @@ int main(int argc, char * argv[])
 		    
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"8"))
-		{
-		    
-		}
-		else if(ifp_is_it_equal(cp_bagli_liste_giris,"9"))
 		{
 		    break;	
 		}
