@@ -149,6 +149,15 @@ void vfp_delete_enter_char(char * gets_input)
 }
 //___________________________________________________________________________________
 
+int charToInt(char c){
+	int num = 0;
+
+	//Substract '0' from entered char to get
+	//corresponding digit
+	num = c - '0';
+
+	return num;
+}
 
 //-----------------------------İn Char Array Out İnt Value---------------------------
 int ifp_parameter_to_int(char parameter[])
@@ -173,7 +182,7 @@ int ifp_parameter_to_int(char parameter[])
 
 
 
-_________________________________LINKED LIST ALL FUNCTİONS______________________________________
+//_________________________________LINKED LIST ALL FUNCTİONS______________________________________
 
 //----------------------------------Print Linked List Menu Functions-----------------
 void vf_print_linked_list_menu()
@@ -361,6 +370,8 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"2"))
 		{
+		    char * cp_link_list_count = (char*)malloc(sizeof(char)*5);
+		    int iv_list_count=ifp_parameter_to_int(cp_link_list_count);
 		    vfp_create_linked_list_rnd(sp_list,iv_list_count);
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"3"))
