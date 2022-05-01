@@ -149,6 +149,17 @@ void vfp_delete_enter_char(char * gets_input)
 }
 //___________________________________________________________________________________
 
+//-----------------------------İn Char Out İnt Value---------------------------
+int charToInt(char c){
+	int num = 0;
+
+	//Substract '0' from entered char to get
+	//corresponding digit
+	num = c - '0';
+
+	return num;
+}
+//___________________________________________________________________________________
 
 //-----------------------------İn Char Array Out İnt Value---------------------------
 int ifp_parameter_to_int(char parameter[])
@@ -159,7 +170,7 @@ int ifp_parameter_to_int(char parameter[])
   for(int i = lenght-1;i>=0;i--)
   {
     int sayisal_deger=0;
-    //printf("kaRAKTER %c",parameter[i]);
+    printf("kaRAKTER %c",parameter[i]);
     sayisal_deger = charToInt(parameter[i]);
     //printf("sAYI KARŞILIGI %d",sayisal_deger);
     toplam += ((sayisal_deger*katsayi));
@@ -173,7 +184,7 @@ int ifp_parameter_to_int(char parameter[])
 
 
 
-_________________________________LINKED LIST ALL FUNCTİONS______________________________________
+//_________________________________LINKED LIST ALL FUNCTİONS______________________________________
 
 //----------------------------------Print Linked List Menu Functions-----------------
 void vf_print_linked_list_menu()
