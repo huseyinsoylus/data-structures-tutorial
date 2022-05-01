@@ -148,6 +148,20 @@ void vfp_delete_enter_char(char * gets_input)
 }
 //___________________________________________________________________________________
 
+//----------------------------------Print Linked List Functions----------------------
+void vf_print_linked_list()
+{
+    vfp_color_change("Yellow");
+    
+    printf("Bağlantılı Liste Eğitimine Hoşgeldiniz.\n");
+    vfp_print_window_size_ch('-',sw_cmd_width);
+    printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur\n3-)Rasgele Bağlantılı Liste Oluştur\n4-)Eleman Ekle\n5-)Eleman Sil\n6-)Eleman Güncelle\n7-)Listeyi Göster\n8-)Listeyi Sil\n");
+    vfp_print_window_size_ch('-',sw_cmd_width);
+    
+    vfp_color_change("");
+}
+//___________________________________________________________________________________
+
 
 int main(int argc, char * argv[])
 {
@@ -164,7 +178,12 @@ int main(int argc, char * argv[])
 	printf("Eğitim Girişi:");
 	fflush(stdin);
 	fgets(giv_girdi,10,stdin);
+	vfp_delete_enter_char(giv_girdi);
 	//printf("%s",giv_girdi);
+	
+	/*print '-'*/	
+        vfp_print_window_size_ch('-',sw_cmd_width);
+	
 	if(ifp_is_it_equal(giv_girdi,"1"))
 	{
 	    printf("Bağlantılı Liste Eğitimine Hoşgeldiniz.\n");
