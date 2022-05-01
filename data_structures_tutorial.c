@@ -128,6 +128,7 @@ void vfp_color_change(char * color_name)
 }
 //___________________________________________________________________________________
 
+//----------------------------------Print Education Functions----------------------------
 void vf_print_education_list()
 {
     vfp_color_change("default");
@@ -147,6 +148,32 @@ void vfp_delete_enter_char(char * gets_input)
     gets_input[iv_lenght-1]='\0';
 }
 //___________________________________________________________________________________
+
+
+//-----------------------------İn Char Array Out İnt Value---------------------------
+int ifp_parameter_to_int(char parameter[])
+{
+  int lenght = strlen(parameter);
+  int toplam = 0;
+  int katsayi=1;
+  for(int i = lenght-1;i>=0;i--)
+  {
+    int sayisal_deger=0;
+    //printf("kaRAKTER %c",parameter[i]);
+    sayisal_deger = charToInt(parameter[i]);
+    //printf("sAYI KARŞILIGI %d",sayisal_deger);
+    toplam += ((sayisal_deger*katsayi));
+    katsayi*=10;
+  }
+
+  return toplam;
+}
+//___________________________________________________________________________________
+
+
+
+
+_________________________________LINKED LIST ALL FUNCTİONS______________________________________
 
 //----------------------------------Print Linked List Menu Functions-----------------
 void vf_print_linked_list_menu()
@@ -334,7 +361,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"2"))
 		{
-		    vfp_create_linked_list_rnd(sp_list,10);
+		    vfp_create_linked_list_rnd(sp_list,iv_list_count);
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"3"))
 		{
