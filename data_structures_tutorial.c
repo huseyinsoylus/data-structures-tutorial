@@ -114,6 +114,20 @@ void vfp_print_window_size_ch(char ch, struct winsize w)
 }
 //___________________________________________________________________________________
 
+//----------------------------------Print Color Functions----------------------------
+void vfp_color_change(char * color_name)
+{
+    if(strcmp(color_name,"Yellow")==0)
+    {
+        printf("\033[0;33m");
+    }
+    else
+    {
+        printf("\033[0m");
+    }
+}
+//___________________________________________________________________________________
+
 int main(int argc, char * argv[])
 {
     //Console clear
