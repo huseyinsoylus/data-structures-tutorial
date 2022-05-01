@@ -148,14 +148,14 @@ void vfp_delete_enter_char(char * gets_input)
 }
 //___________________________________________________________________________________
 
-//----------------------------------Print Linked List Functions----------------------
+//----------------------------------Print Linked List Menu Functions-----------------
 void vf_print_linked_list_menu()
 {
     vfp_color_change("Yellow");
     
     printf("Bağlantılı Liste Eğitimine Hoşgeldiniz.\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
-    printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur\n3-)Eleman Ekle\n4-)Eleman Sil\n5-)Eleman Güncelle\n6-)Listeyi Göster\n7-)Listeyi Sil\n8-)Bir Üst Menüye Dön\n");
+    printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur(10)\n3-)Eleman Ekle\n4-)Eleman Sil\n5-)Eleman Güncelle\n6-)Listeyi Göster\n7-)Listeyi Sil\n8-)Bir Üst Menüye Dön\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
     
     vfp_color_change("");
@@ -178,43 +178,44 @@ void vf_print_linll_info()
 struct linked_list 
 {
     int value;                     //Data of the node
-    struct node *nextptr;           //Address of the next node
+    struct linked_list *nextptr;           //Address of the next node
 }*linked_root;
 //___________________________________________________________________________________
 
 
 //-------------------------------Create Random Linked List----------------------------
 
-void vfp_create_linked_list_rnd(struct node *root, int iv_list_lenght){
-
+void vfp_create_linked_list_rnd(struct linked_list *root,int iv_list_lenght){
+    root = malloc(sizeof(struct linked_list *));
     if(root == NULL){
-        printf("Olusuturulacak bagli liste icin bellek ayrilmamis");
+        perror("No memory is allocated for the linked list to be created\n");
         exit(1);
     }  
 
-    struct node * tmp = malloc(sizeof(struct node *));
+    struct linked_list * tmp = malloc(sizeof(struct linked_list *));
     if(tmp == NULL){
-        printf("tmp degiskeni icin bellek olusturma hatasi\n"); //Bellek olusturma kontrolu.
+        perror("Error creating memory for variable tmp\n"); //Bellek olusturma kontrolu.
         exit(1);
     }
 
     tmp = root;
-    
     if(root != NULL && root->nextptr == NULL){
 
         for(int i = 1;i<=iv_list_lenght;i++){
     
-        struct node * sp_new_node = malloc(sizeof(struct node *));
+        struct linked_list *sp_new_node = malloc(sizeof(struct linked_list *));
         tmp->nextptr = sp_new_node;
-        sp_new_node->value = i*5;
+        sp_new_node->value = rand() % 50;
         tmp = sp_new_node; 
         }
 
     }
     else{
+        perror("Root node is empty or already a list.\n");
+    }
     
-        printf("Root pointeri bos ya da root bir liste su anda ici bos degil!!");
-    }   
+    printf("Bağlı liste başarıyla oluşturuldu.\n");
+    vfp_print_window_size_ch('-',sw_cmd_width);
 }
 //___________________________________________________________________________________
 
@@ -251,8 +252,8 @@ int main(int argc, char * argv[])
 	    
 	    while(1)
 	    {
-	    	printf("Seçeneği girin:");
 	        fflush(stdin);
+	    	printf("Seçeneği girin:");
 	        fgets(cp_bagli_liste_giris,10,stdin);
 	        vfp_delete_enter_char(cp_bagli_liste_giris);
 	        
@@ -265,7 +266,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"2"))
 		{
-		    
+		    vfp_create_linked_list_rnd(linked_root,5);
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"3"))
 		{
