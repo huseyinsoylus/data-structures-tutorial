@@ -128,6 +128,18 @@ void vfp_color_change(char * color_name)
 }
 //___________________________________________________________________________________
 
+void vf_print_education_list()
+{
+    vfp_color_change("default");
+    printf("Eğitim Listesi\n");
+    
+    vfp_print_window_size_ch('-',sw_cmd_width);
+    printf("1-)Bağlantılı Liste\n2-)Çift Yönlü Bağlantılı Liste\n3-)Çevrimli Bağlantılı liste\n4-)Yığıt\n5-)Kuyruk\n\n");
+    printf("Hangi eğitime girmek istiyorsanız sıra numarasını yazınız.\nEğitimi sonlandırmak için exit - Exit yazınız.\n");
+    vfp_print_window_size_ch('-',sw_cmd_width);
+}
+//___________________________________________________________________________________
+
 int main(int argc, char * argv[])
 {
     //Console clear
