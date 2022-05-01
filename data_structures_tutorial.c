@@ -149,18 +149,20 @@ void vfp_delete_enter_char(char * gets_input)
 //___________________________________________________________________________________
 
 //----------------------------------Print Linked List Functions----------------------
-void vf_print_linked_list()
+void vf_print_linked_list_menu()
 {
     vfp_color_change("Yellow");
     
     printf("Bağlantılı Liste Eğitimine Hoşgeldiniz.\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
-    printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur\n3-)Rasgele Bağlantılı Liste Oluştur\n4-)Eleman Ekle\n5-)Eleman Sil\n6-)Eleman Güncelle\n7-)Listeyi Göster\n8-)Listeyi Sil\n9-)Ana Menüye Dön\n");
+    printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur\n3-)Eleman Ekle\n4-)Eleman Sil\n5-)Eleman Güncelle\n6-)Listeyi Göster\n7-)Listeyi Sil\n8-)Bir Üst Menüye Dön\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
     
     vfp_color_change("");
 }
 //___________________________________________________________________________________
+
+//----------------------------------LINKED LIST ALL FUNCTİONS--------------------------------------
 
 //----------------------------------Print Linked List Info Func----------------------
 void vf_print_linll_info()
@@ -172,6 +174,15 @@ void vf_print_linll_info()
 }
 //___________________________________________________________________________________
 
+//-------------------------------Create Linked List Struct---------------------------
+struct linked_list 
+{
+    int value;                     //Data of the node
+    struct node *nextptr;           //Address of the next node
+}*linked_root;
+//___________________________________________________________________________________
+
+//____________________________________LINKED LIST ALL________________________________
 int main(int argc, char * argv[])
 {
     //Console clear
@@ -196,7 +207,7 @@ int main(int argc, char * argv[])
 	if(ifp_is_it_equal(giv_girdi,"1"))
 	{
 	//printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur\n3-)Eleman Ekle\n4-)Eleman Sil\n5-)Eleman Güncelle\n6-)Listeyi Göster\n7-)Listeyi Sil\n8-)Bir Üst Menüye Dön\n");
-	    vf_print_linked_list();
+	    vf_print_linked_list_menu();
 	    char * cp_bagli_liste_giris = (char*)malloc(sizeof(char)*10);
 	    
 	    while(1)
@@ -239,6 +250,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"8"))
 		{
+		    vf_print_education_list();
 		    break;	
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"exit") || ifp_is_it_equal(cp_bagli_liste_giris,"Exit"))
