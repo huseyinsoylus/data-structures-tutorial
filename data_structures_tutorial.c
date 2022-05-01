@@ -170,7 +170,7 @@ int ifp_parameter_to_int(char parameter[])
   for(int i = lenght-1;i>=0;i--)
   {
     int sayisal_deger=0;
-    printf("kaRAKTER %c",parameter[i]);
+    //printf("kaRAKTER %c",parameter[i]);
     sayisal_deger = charToInt(parameter[i]);
     //printf("sAYI KARŞILIGI %d",sayisal_deger);
     toplam += ((sayisal_deger*katsayi));
@@ -223,7 +223,7 @@ struct linked_list
 
 //-------------------------------Create Random Linked List----------------------------
 
-void vfp_create_linked_list_rnd(struct linked_list *root,int iv_list_lenght){
+void vfp_create_linked_list_rnd(struct linked_list *root){
     
     if(root == NULL){
         perror("No memory is allocated for the linked list to be created\n");
@@ -233,7 +233,10 @@ void vfp_create_linked_list_rnd(struct linked_list *root,int iv_list_lenght){
     if(tmp == NULL){
         perror("Error creating memory for variable tmp\n"); //Bellek olusturma kontrolu.
     }
-
+    char cv_list_count[5];
+    fgets(cv_list_count,5,stdin);
+    vfp_delete_enter_char(cv_list_count);
+    int iv_list_lenght = ifp_parameter_to_int(cv_list_count);
     tmp = root;
     if(root != NULL && root->nextptr == NULL){
 
@@ -372,7 +375,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"2"))
 		{
-		    vfp_create_linked_list_rnd(sp_list,iv_list_count);
+		    vfp_create_linked_list_rnd(sp_list);
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"3"))
 		{
