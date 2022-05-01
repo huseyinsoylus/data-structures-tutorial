@@ -191,7 +191,7 @@ void vfp_create_linked_list_rnd(struct linked_list *root,int iv_list_lenght){
         perror("No memory is allocated for the linked list to be created\n");
     }  
 
-    struct linked_list * tmp = malloc(sizeof(struct linked_list *));
+    struct linked_list * tmp = (linked_list *)malloc(sizeof(struct linked_list *));
     if(tmp == NULL){
         perror("Error creating memory for variable tmp\n"); //Bellek olusturma kontrolu.
     }
@@ -201,7 +201,7 @@ void vfp_create_linked_list_rnd(struct linked_list *root,int iv_list_lenght){
 
         for(int i = 1;i<iv_list_lenght;i++){
     
-        struct linked_list *sp_new_node = malloc(sizeof(struct linked_list *));
+        struct linked_list *sp_new_node = (linked_list *)malloc(sizeof(struct linked_list *));
         tmp->nextptr = sp_new_node;
         sp_new_node->value = rand() % 50;
         tmp = sp_new_node; 
@@ -224,7 +224,7 @@ void vfp_print_linked_list(struct linked_list * root){
         perror("The linked list is empty.\n");
     }  
 
-	struct linked_list * tmp = malloc(sizeof(struct linked_list *));
+	struct linked_list * tmp = (linked_list *)malloc(sizeof(struct linked_list *));
     if(tmp == NULL){
         perror("Error creating memory for pointer tmp\n"); //Bellek olusturma kontrolu.
     }
@@ -246,7 +246,7 @@ int main(int argc, char * argv[])
     //Console clear
     system("clear");
     
-    giv_girdi = malloc(sizeof(char)*10);
+    giv_girdi = (char*)malloc(sizeof(char)*10);
     printf("Veri yapıları ve algoritmalar eğitim programına hoşgeldiniz.\n\n");
     
     vf_print_education_list();
