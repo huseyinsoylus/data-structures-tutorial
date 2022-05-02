@@ -227,12 +227,12 @@ struct linked_list
 void vfp_create_linked_list_rnd(struct linked_list *root){
     
     if(root == NULL){
-        perror("No memory is allocated for the linked list to be created\n");
+        perror("Fail: No memory is allocated for the linked list to be created\n");
     }  
 
     struct linked_list * tmp = (struct linked_list*)malloc(sizeof(struct linked_list *));
     if(tmp == NULL){
-        perror("Error creating memory for variable tmp\n"); //Bellek olusturma kontrolu.
+        perror("Fail: Error creating memory for variable tmp\n"); //Bellek olusturma kontrolu.
     }
     
     char cv_list_count[10];
@@ -254,7 +254,7 @@ void vfp_create_linked_list_rnd(struct linked_list *root){
         printf("Bağlı liste başarıyla oluşturuldu.\n");
     }
     else{
-        perror("Root node is empty or already a list.\n");
+        perror("Fail: Root node is empty or already a list.\n");
     }
     
     vfp_print_window_size_ch('-',sw_cmd_width);
@@ -394,12 +394,12 @@ void vfp_update_link_list(struct linked_list * head) {
 void vfp_print_linked_list(struct linked_list * root){
 
     if(root == NULL){
-        perror("The linked list is empty.\n");
+        perror("Fail: The linked list is empty.\n");
     }  
 
 	struct linked_list * tmp = (struct linked_list*)malloc(sizeof(struct linked_list *));
     if(tmp == NULL){
-        perror("Error creating memory for pointer tmp\n"); //Bellek olusturma kontrolu.
+        perror("Fail: Error creating memory for pointer tmp\n"); //Bellek olusturma kontrolu.
     }
     tmp = root;
     int i=1;
