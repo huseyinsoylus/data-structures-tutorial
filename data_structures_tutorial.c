@@ -189,6 +189,14 @@ int ifp_parameter_to_int(char parameter[])
 
 //_________________________________LINKED LIST ALL FUNCTİONS______________________________________
 
+//-------------------------------Create Linked List Struct---------------------------
+struct linked_list 
+{
+    int value;                     //Data of the node
+    struct linked_list *nextptr;           //Address of the next node
+};
+//___________________________________________________________________________________
+
 //----------------------------------Print Linked List Menu Functions-----------------
 void vf_print_linked_list_menu()
 {
@@ -211,14 +219,6 @@ void vf_print_linll_info()
     vfp_print_window_size_ch('-',sw_cmd_width);
 
 }
-//___________________________________________________________________________________
-
-//-------------------------------Create Linked List Struct---------------------------
-struct linked_list 
-{
-    int value;                     //Data of the node
-    struct linked_list *nextptr;           //Address of the next node
-};
 //___________________________________________________________________________________
 
 
@@ -536,15 +536,15 @@ int main(int argc, char * argv[])
 	}
 	else if(ifp_is_it_equal(giv_girdi,"3"))
 	{
-	    printf("Çevrimli Liste Eğitimine Hoşgeldiniz.\n");
+	    printf("Yığıt Eğitimine Hoşgeldiniz.\n");
 	}
 	else if(ifp_is_it_equal(giv_girdi,"4"))
 	{
-	    printf("Yığıt Eğitimine Hoşgeldiniz.\n");
+	    printf("Kuyruk Liste Eğitimine Hoşgeldiniz.\n");
 	}
 	else if(ifp_is_it_equal(giv_girdi,"5"))
 	{
-	    printf("Kuyruk Liste Eğitimine Hoşgeldiniz.\n");
+	    printf("İkili Arama Ağacı Eğitimine Hoşgeldiniz.\n");
 	}
 	else if(ifp_is_it_equal(giv_girdi,"exit") || ifp_is_it_equal(giv_girdi,"Exit"))
 	{
