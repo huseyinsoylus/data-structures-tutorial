@@ -504,6 +504,25 @@ int ifp_is_empty_queue(struct Queue* queue)
 }
 //___________________________________________________________________________________
 
+//---------------------------------Enqueue Function -----------------------------------
+void vf_enqueue(struct Queue* queue)
+{
+    char cv_que_add_value[10];
+    printf("Kuyruğa eklenecek elemanı girin:");
+    fgets(cv_que_add_value,10,stdin);
+    vfp_delete_enter_char(cv_que_add_value);
+    unsigned iv_add_que_value = ifp_parameter_to_int(cv_que_add_value);
+    
+    if (ifp_is_full_queue(queue))
+        return;
+    queue->rear = (queue->rear + 1)
+                  % queue->capacity;
+    queue->array[queue->rear] = iv_add_que_value;
+    queue->size = queue->size + 1;
+    printf("%d Kuyruğa alındı.\n", iv_add_que_value);
+    vfp_print_window_size_ch('-',sw_cmd_width);
+}
+//___________________________________________________________________________________
 
 
 //____________________________________QUEUE ALL______________________________________
@@ -642,6 +661,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_kuyruk_giris,"3"))
 		{
+		    vf_enqueue(queue);
 		}
 		else if(ifp_is_it_equal(cp_kuyruk_giris,"4"))
 		{
