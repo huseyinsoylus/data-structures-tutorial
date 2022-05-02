@@ -217,7 +217,7 @@ struct linked_list
 {
     int value;                     //Data of the node
     struct linked_list *nextptr;           //Address of the next node
-}*linked_root;
+};
 //___________________________________________________________________________________
 
 
@@ -341,12 +341,21 @@ void vfp_print_linked_list(struct linked_list * root){
     }
     tmp = root;
     int i=1;
-	while(tmp != NULL){
-	    printf("%d. Deger = %5d\n",i,tmp->value);
-	    tmp=tmp->nextptr;
+    while(tmp != NULL){
+        printf("%d. Deger = %5d\n",i,tmp->value);
+        tmp=tmp->nextptr;
         i++;
+    }
+    vfp_print_window_size_ch('-',sw_cmd_width);
+}
+//___________________________________________________________________________________
 
-	}
+//-------------------------------Delete Linked List-----------------------------------
+void vfp_delete_linked_list(struct linked_list * root)
+{
+    root->nextptr=NULL;
+    root = NULL;
+    printf("Liste başarıyla silindi.\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
 }
 //___________________________________________________________________________________
@@ -419,7 +428,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"7"))
 		{
-		    
+		    vfp_delete_linked_list(sp_list);
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"8"))
 		{
