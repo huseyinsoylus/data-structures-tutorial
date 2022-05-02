@@ -204,7 +204,7 @@ void vf_print_linked_list_menu()
     
     printf("Bağlantılı Liste Eğitimine Hoşgeldiniz.\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
-    printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur\n3-)Eleman Ekle\n4-)Eleman Sil\n5-)Eleman Güncelle\n6-)Listeyi Göster\n7-)Listeyi Sil\n8-)Bir Üst Menüye Dön\n");
+    printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur\n3-)Eleman Ekle\n4-)Eleman Sil\n5-)Eleman Güncelle\n6-)Listeyi Göster\n7-)Listeyi Sil\n8-)Bir Üst Menüye Dön\n9-)Eğitimi sonlandırmak için exit - Exit yazınız.\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
     
     vfp_color_change("");
@@ -444,7 +444,7 @@ void vf_print_queue_menu()
     
     printf("Kuyruk Eğitimine Hoşgeldiniz.\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
-    printf("1-)Bilgilendirme\n2-)Kuyruk Oluştur\n3-)Sıraya Ekle\n4-)Sıradan Çıkar\n5-)Eleman Güncelle\n6-)Kuyruğu Göster\n7-)Kuyruğu Sil\n8-)Bir Üst Menüye Dön\n");
+    printf("1-)Bilgilendirme\n2-)Kuyruk Oluştur\n3-)Sıraya Ekle\n4-)Sıradan Çıkar\n5-)Sıradaki Elemanı Göster\n6-)Sondaki Elemanı Göster\n7-)Kuyruğu Sil\n8-)Bir Üst Menüye Dön\n9-)Eğitimi sonlandırmak için exit - Exit yazınız.\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
     
     vfp_color_change("");
@@ -524,6 +524,14 @@ void vf_enqueue(struct Queue* queue)
 }
 //___________________________________________________________________________________
 
+//---------------------------------Enqueue Function -----------------------------------
+int ifp_queue_front(struct Queue* queue)
+{
+    if (isEmpty(queue))
+        return INT_MIN;
+    return queue->array[queue->front];
+}
+//___________________________________________________________________________________
 
 //____________________________________QUEUE ALL______________________________________
 
@@ -642,7 +650,7 @@ int main(int argc, char * argv[])
 	    
 	    while(1)
 	    {
-	    //printf("1-)Bilgilendirme\n2-)Kuyruk Oluştur\n3-)Sıraya Ekle\n4-)Sıradan Çıkar\n5-)Eleman Güncelle\n6-)Kuyruğu Göster\n7-)Kuyruğu Sil\n8-)Bir Üst Menüye Dön\n");
+	    //printf("1-)Bilgilendirme\n2-)Kuyruk Oluştur\n3-)Sıraya Ekle\n4-)Sıradan Çıkar\n5-)Sıradaki Elemanı Göster\n6-)Sondaki Elemanı Göster\n7-)Kuyruğu Sil\n8-)Bir Üst Menüye Dön\n");
 	        fflush(stdin);
 	    	printf("Seçeneği girin:");
 	        fgets(cp_kuyruk_giris,10,stdin);
