@@ -556,6 +556,21 @@ int ifp_queue_front(struct Queue* queue)
 }
 //___________________________________________________________________________________
 
+//---------------------------------Queue Rear Function -----------------------------------
+int ifp_queue_rear(struct Queue* queue)
+{
+    if (ifp_is_empty_queue(queue))
+    {
+        printf("Sırada bekleyen kimse yok. Kuyruk boş.\n");
+        vfp_print_window_size_ch('-',sw_cmd_width);
+        return INT_MIN;
+    }
+    vfp_print_window_size_ch('-',sw_cmd_width);
+    return queue->array[queue->rear];
+}
+//___________________________________________________________________________________
+
+
 //____________________________________QUEUE ALL______________________________________
 
 /*
