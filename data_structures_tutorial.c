@@ -138,7 +138,7 @@ void vf_print_education_list()
     printf("Eğitim Listesi\n");
     
     vfp_print_window_size_ch('-',sw_cmd_width);
-    printf("1-)Bağlantılı Liste\n2-)Çift Yönlü Bağlantılı Liste\n3-)Yığıt\n4-)Kuyruk\n5-)İkili Arama Ağacı\n\n");
+    printf("1-)Bağlantılı Liste\n2-)Kuyruk\n3-)Yığıt\n4-)İkili Arama Ağacı\n\n");
     printf("Hangi eğitime girmek istiyorsanız sıra numarasını yazınız.\nEğitimi sonlandırmak için exit - Exit yazınız.\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
 }
@@ -212,9 +212,9 @@ void vf_print_linked_list_menu()
 //___________________________________________________________________________________
 
 //----------------------------------Print Linked List Info Func----------------------
-void vf_print_linll_info()
+void vf_print_linkl_info()
 {
-    printf("Bilgilendirme:\n");
+    printf("Bağlı Liste Bilgilendirme:\n");
     printf("Her düğüm yalnızca bir sonraki düğümün adresi barındırır bunun sonucu olarak tek yönde okuma yapılabilir, bir düğümden önceki düğüme erişilemez. Düğüm yapısı C programlama dilinde struct kullanılarak yapılır.\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
 
@@ -428,7 +428,7 @@ void vfp_delete_linked_list(struct linked_list * root)
 
 //____________________________________QUEUE ALL______________________________________
 
-//-------------------------------Delete Linked List-----------------------------------
+//---------------------------------Print Queue MENU-----------------------------------
 void vf_print_queue_menu()
 {
     vfp_color_change("Yellow");
@@ -440,8 +440,23 @@ void vf_print_queue_menu()
     
     vfp_color_change("");
 }
+//___________________________________________________________________________________
 
 
+//----------------------------------Print Queue Info Func----------------------
+void vf_print_queue_info()
+{
+    printf("Kuyruk Bilgilendirme:\n");
+    printf("Kuyruk, eleman eklemelerin sondan (rear) ve eleman çıkarmaların bastan (front) yapıldığı, (First InFirst Out-İlk Gelen İlk Çıkar –FIFO) olarak modellenen, doğrusal bir veri saklama yapısıdır.\n");
+    printf("--> Bir elemanın kuyruğa girmesi insert(literatürde put, add veya enqueue olarak da geçer) işlemi iken listeden silinmesi remove (delete veya dequeue) işlemidir.\n");
+    printf("--> Insert’ler kuyruğun arkasından yapılırken, remove’lar kuyruğun önünden yapılırlar.\n");
+    printf("--> Boş bir kuyruktan eleman silmeye çalışmak underflow hatası üretirken, dolu bir kuyruğa eleman eklemeye çalışmak overflow hatası üretir.\n");
+    printf("--> Kuyruk yapısı, yığın yapısına oldukça benzemektedir. İkisinde de eleman ekleme işlemi en sondan yapılmaktadır.\n");
+    printf("--> Aralarındaki fark eleman çıkartmanın yığın yapısında en sondan, kuyruk yapısında ise en baştan yapılmasıdır.\n");
+    vfp_print_window_size_ch('-',sw_cmd_width);
+
+}
+//___________________________________________________________________________________
 
 
 //____________________________________QUEUE ALL______________________________________
@@ -509,7 +524,7 @@ int main(int argc, char * argv[])
 	        
 	        if(ifp_is_it_equal(cp_bagli_liste_giris,"1"))
 		{
-		    vf_print_linll_info();
+		    vf_print_linkl_info();
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"2"))
 		{
@@ -554,17 +569,66 @@ int main(int argc, char * argv[])
 	}
 	else if(ifp_is_it_equal(giv_girdi,"2"))
 	{
-	    printf("Çift Bağlantılı Liste Eğitimine Hoşgeldiniz.\n");
+	    
+	    vf_print_queue_menu();
+	    char * cp_kuyruk_giris = (char*)malloc(sizeof(char)*10);
+	    
+	    while(1)
+	    {
+	    //printf("1-)Bilgilendirme\n2-)Kuyruk Oluştur\n3-)Sıraya Ekle\n4-)Sıradan Çıkar\n5-)Eleman Güncelle\n6-)Kuyruğu Göster\n7-)Kuyruğu Sil\n8-)Bir Üst Menüye Dön\n");
+	        fflush(stdin);
+	    	printf("Seçeneği girin:");
+	        fgets(cp_kuyruk_giris,10,stdin);
+	        vfp_delete_enter_char(cp_kuyruk_giris);
+	        
+		/*print '-'*/
+	        vfp_print_window_size_ch('-',sw_cmd_width);
+	        
+	        if(ifp_is_it_equal(cp_kuyruk_giris,"1"))
+		{
+		    vf_print_queue_info();
+		}
+		else if(ifp_is_it_equal(cp_kuyruk_giris,"2"))
+		{
+		    
+		}
+		else if(ifp_is_it_equal(cp_kuyruk_giris,"3"))
+		{
+		}
+		else if(ifp_is_it_equal(cp_kuyruk_giris,"4"))
+		{
+		}
+		else if(ifp_is_it_equal(cp_kuyruk_giris,"5"))
+		{
+		}
+		else if(ifp_is_it_equal(cp_kuyruk_giris,"6"))
+		{
+		}
+		else if(ifp_is_it_equal(cp_kuyruk_giris,"7"))
+		{
+		}
+		else if(ifp_is_it_equal(cp_kuyruk_giris,"8"))
+		{
+		    vf_print_education_list();
+		    break;	
+		}
+		else if(ifp_is_it_equal(cp_kuyruk_giris,"exit") || ifp_is_it_equal(cp_kuyruk_giris,"Exit"))
+		{
+		    printf("Programdan çıkılıyor. İyi günler dileriz.\n");
+		    _Exit(0);
+		}
+		else
+		{
+		    printf("Giriş yaptığınız değer geçersizdir.\n");
+		    vfp_print_window_size_ch('-',sw_cmd_width);
+		}
+	    }
 	}
 	else if(ifp_is_it_equal(giv_girdi,"3"))
 	{
-	    printf("Yığıt Eğitimine Hoşgeldiniz.\n");
+	    printf("Yığıt Liste Eğitimine Hoşgeldiniz.\n");
 	}
 	else if(ifp_is_it_equal(giv_girdi,"4"))
-	{
-	    printf("Kuyruk Liste Eğitimine Hoşgeldiniz.\n");
-	}
-	else if(ifp_is_it_equal(giv_girdi,"5"))
 	{
 	    printf("İkili Arama Ağacı Eğitimine Hoşgeldiniz.\n");
 	}
