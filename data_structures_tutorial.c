@@ -357,7 +357,7 @@ int main(int argc, char * argv[])
 	{
 	//printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur\n3-)Eleman Ekle\n4-)Eleman Sil\n5-)Eleman Güncelle\n6-)Listeyi Göster\n7-)Listeyi Sil\n8-)Bir Üst Menüye Dön\n");
 	    
-	    struct linked_list * sp_list = (struct linked_list*)malloc(sizeof(struct linked_list*));
+	    struct linked_list * sp_list = (struct linked_list*)malloc(sizeof(struct linked_list*));//Bir üst listeye çıkıldığında liste kaybolur.
 	    
 	    vf_print_linked_list_menu();
 	    char * cp_bagli_liste_giris = (char*)malloc(sizeof(char)*10);
@@ -413,6 +413,7 @@ int main(int argc, char * argv[])
 		else
 		{
 		    printf("Giriş yaptığınız değer geçersizdir.\n");
+		    vfp_print_window_size_ch('-',sw_cmd_width);
 		}
 	    }
 	}
@@ -440,6 +441,7 @@ int main(int argc, char * argv[])
 	else
 	{
 	    printf("Giriş yaptığınız değer geçersizdir.\n");
+	    vfp_print_window_size_ch('-',sw_cmd_width);
 	}
     }
     
