@@ -91,6 +91,10 @@ struct winsize sw_cmd_width;
 
 
 //----------------------------------Function Declare Area----------------------------
+
+//______________________________________GLOBAL FUNCTİONS_____________________________________
+
+//----------------------------------İs It Equal Functions----------------------------
 int ifp_is_it_equal(char * expression1, char * expression2)
 {
     return !strcmp(expression1,expression2);
@@ -180,7 +184,7 @@ int ifp_parameter_to_int(char parameter[])
 }
 //___________________________________________________________________________________
 
-
+//______________________________________GLOBAL FUNCTİONS_____________________________________
 
 
 //_________________________________LINKED LIST ALL FUNCTİONS______________________________________
@@ -198,8 +202,6 @@ void vf_print_linked_list_menu()
     vfp_color_change("");
 }
 //___________________________________________________________________________________
-
-//----------------------------------LINKED LIST ALL FUNCTİONS--------------------------------------
 
 //----------------------------------Print Linked List Info Func----------------------
 void vf_print_linll_info()
@@ -420,8 +422,28 @@ void vfp_delete_linked_list(struct linked_list * root)
 }
 //___________________________________________________________________________________
 
-
 //____________________________________LINKED LIST ALL________________________________
+
+/*
+*
+*
+*
+*
+*
+*
+*
+*
+*		MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN MAIN  
+*
+*
+*
+*
+*
+*
+*
+*/
+
+
 int main(int argc, char * argv[])
 {
     //Console clear
