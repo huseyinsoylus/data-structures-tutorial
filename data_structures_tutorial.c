@@ -527,8 +527,12 @@ void vf_enqueue(struct Queue* queue)
 //---------------------------------Enqueue Function -----------------------------------
 int ifp_queue_front(struct Queue* queue)
 {
-    if (isEmpty(queue))
+    if (ifp_is_empty_queue(queue))
+    {
+        printf("Sırada bekleyen kimse yok. Kuyruk boş.\n");
         return INT_MIN;
+    }
+        
     return queue->array[queue->front];
 }
 //___________________________________________________________________________________
