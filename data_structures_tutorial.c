@@ -428,6 +428,15 @@ void vfp_delete_linked_list(struct linked_list * root)
 
 //____________________________________QUEUE ALL______________________________________
 
+//----------------------------------Create Queue Struct -----------------------------
+// A structure to represent a queue
+struct Queue {
+    int front, rear, size;
+    unsigned capacity;
+    int* array;
+};
+//___________________________________________________________________________________
+
 //---------------------------------Print Queue MENU-----------------------------------
 void vf_print_queue_menu()
 {
@@ -458,14 +467,7 @@ void vf_print_queue_info()
 }
 //___________________________________________________________________________________
 
-//----------------------------------Create Queue Struct Func-------------------------
-// A structure to represent a queue
-struct Queue {
-    int front, rear, size;
-    unsigned capacity;
-    int* array;
-};
-//___________________________________________________________________________________
+
 
 //____________________________________QUEUE ALL______________________________________
 
