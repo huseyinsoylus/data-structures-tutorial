@@ -233,10 +233,13 @@ void vfp_create_linked_list_rnd(struct linked_list *root){
     if(tmp == NULL){
         perror("Error creating memory for variable tmp\n"); //Bellek olusturma kontrolu.
     }
-    char cv_list_count[5];
-    fgets(cv_list_count,5,stdin);
+    
+    char cv_list_count[10];
+    printf("Bağlı liste uzunluğunu girin:");
+    fgets(cv_list_count,10,stdin);
     vfp_delete_enter_char(cv_list_count);
-    int iv_list_lenght = ifp_parameter_to_int(cv_list_count);
+    long int iv_list_lenght = ifp_parameter_to_int(cv_list_count);
+    
     tmp = root;
     if(root != NULL && root->nextptr == NULL){
 
@@ -247,13 +250,12 @@ void vfp_create_linked_list_rnd(struct linked_list *root){
         sp_new_node->value = rand() % 50;
         tmp = sp_new_node; 
         }
-
+        printf("Bağlı liste başarıyla oluşturuldu.\n");
     }
     else{
         perror("Root node is empty or already a list.\n");
     }
     
-    printf("Bağlı liste başarıyla oluşturuldu.\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
 }
 //___________________________________________________________________________________
