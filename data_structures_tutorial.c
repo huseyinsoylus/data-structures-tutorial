@@ -260,28 +260,6 @@ void vfp_create_linked_list_rnd(struct linked_list *root){
 }
 //___________________________________________________________________________________
 
-//-------------------------------Print Linked List-----------------------------------
-void vfp_print_linked_list(struct linked_list * root){
-
-    if(root == NULL){
-        perror("The linked list is empty.\n");
-    }  
-
-	struct linked_list * tmp = (struct linked_list*)malloc(sizeof(struct linked_list *));
-    if(tmp == NULL){
-        perror("Error creating memory for pointer tmp\n"); //Bellek olusturma kontrolu.
-    }
-    tmp = root;
-    int i=1;
-	while(tmp != NULL){
-	    printf("%d. Deger = %5d\n",i,tmp->value);
-	    tmp=tmp->nextptr;
-        i++;
-
-	}
-    vfp_print_window_size_ch('-',sw_cmd_width);
-}
-//___________________________________________________________________________________
 
 //-------------------------------Add Linked List-----------------------------------
 
@@ -326,6 +304,29 @@ void vfp_delete_linked_elements(struct linked_list * head_ref, int key) {
   prev->nextptr = temp->nextptr;
 
   free(temp);
+}
+//___________________________________________________________________________________
+
+//-------------------------------Print Linked List-----------------------------------
+void vfp_print_linked_list(struct linked_list * root){
+
+    if(root == NULL){
+        perror("The linked list is empty.\n");
+    }  
+
+	struct linked_list * tmp = (struct linked_list*)malloc(sizeof(struct linked_list *));
+    if(tmp == NULL){
+        perror("Error creating memory for pointer tmp\n"); //Bellek olusturma kontrolu.
+    }
+    tmp = root;
+    int i=1;
+	while(tmp != NULL){
+	    printf("%d. Deger = %5d\n",i,tmp->value);
+	    tmp=tmp->nextptr;
+        i++;
+
+	}
+    vfp_print_window_size_ch('-',sw_cmd_width);
 }
 //___________________________________________________________________________________
 
