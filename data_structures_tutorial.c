@@ -81,7 +81,6 @@ ________________________________________________________________________________
 
 //--------------------------------------Define Area---------------------------------
 
-//___________________________________________________________________________________
 
 //-------------------------------------Global Variables------------------------------
 char * giv_girdi;
@@ -317,14 +316,75 @@ void vfp_delete_linked_elements(struct linked_list * head_ref) {
     }
 
     // If the key is not present
-    if (temp == NULL) return;
+    if (temp == NULL) 
+    {
+        printf("Silinecek eleman listede bulunmuyor\n");
+        vfp_print_window_size_ch('-',sw_cmd_width);
+        return;
+    }
+    else
+    {
+        printf("%ld Elemanı başarıyla silindi.\n",iv_list_del_value);
+        vfp_print_window_size_ch('-',sw_cmd_width);
+    }
 
     // Remove the node
     prev->nextptr = temp->nextptr;
 
     free(temp);
-    printf("%ld Elemanı başarıyla silindi.\n",iv_list_del_value);
-    vfp_print_window_size_ch('-',sw_cmd_width);    
+}
+//___________________________________________________________________________________
+
+//-------------------------------Update Linked List-----------------------------------
+void vfp_update_link_list(struct linked_list * head) {
+
+    //start from the first link
+    struct linked_list* current = head;
+
+    //if list is empty
+    if(head == NULL) 
+    {  
+        return;
+    }
+    
+    
+    char cv_search_value[10];
+    printf("Güncellenecek elemanı girin:");
+    fgets(cv_search_value,10,stdin);
+    vfp_delete_enter_char(cv_search_value);
+    long int iv_list_search_value = ifp_parameter_to_int(cv_search_value);
+    
+    char cv_upt_value[10];
+    printf("Güncel değeri girin:");
+    fgets(cv_upt_value,10,stdin);
+    vfp_delete_enter_char(cv_upt_value);
+    long int iv_list_upt_value = ifp_parameter_to_int(cv_upt_value);
+    
+   //navigate through list
+    while(current->value != iv_list_search_value) 
+    {
+       //if it is last node
+        if(current->nextptr == NULL) 
+        {
+            printf("Güncellenecek değer listede bulunamadı.\n");
+            return;
+        } 
+        else 
+        {
+         //go to next link
+            current = current->nextptr;
+        }
+        if(current->value == iv_list_search_value)
+        {
+            current->value = iv_list_upt_value;
+            printf("%ld değeri %ld ile başarılı bir şekilde güncellenmiştir.\n",iv_list_search_value,iv_list_upt_value);
+            break;
+        }
+    }
+     
+    vfp_print_window_size_ch('-',sw_cmd_width);	
+   //if data found, return the current Link
+   //return current;
 }
 //___________________________________________________________________________________
 
@@ -359,6 +419,7 @@ void vfp_delete_linked_list(struct linked_list * root)
     vfp_print_window_size_ch('-',sw_cmd_width);
 }
 //___________________________________________________________________________________
+
 
 //____________________________________LINKED LIST ALL________________________________
 int main(int argc, char * argv[])
@@ -420,7 +481,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"5"))
 		{
-		    
+		    vfp_update_link_list(sp_list);
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"6"))
 		{
