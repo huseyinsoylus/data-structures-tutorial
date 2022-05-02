@@ -77,6 +77,7 @@ ________________________________________________________________________________
 #include <stdlib.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
+#include <limits.h>
 //___________________________________________________________________________________
 
 //--------------------------------------Define Area---------------------------------
@@ -505,7 +506,7 @@ int ifp_is_empty_queue(struct Queue* queue)
 //___________________________________________________________________________________
 
 //---------------------------------Enqueue Function -----------------------------------
-void vf_enqueue(struct Queue* queue)
+void vfp_enqueue(struct Queue* queue)
 {
     char cv_que_add_value[10];
     printf("Kuyruğa eklenecek elemanı girin:");
@@ -524,15 +525,33 @@ void vf_enqueue(struct Queue* queue)
 }
 //___________________________________________________________________________________
 
-//---------------------------------Enqueue Function -----------------------------------
-int ifp_queue_front(struct Queue* queue)
+//---------------------------------Dequeue Function -----------------------------------
+int ifp_dequeue(struct Queue* queue)
 {
     if (ifp_is_empty_queue(queue))
     {
         printf("Sırada bekleyen kimse yok. Kuyruk boş.\n");
         return INT_MIN;
     }
-        
+    int item = queue->array[queue->front];
+    queue->front = (queue->front + 1)
+                   % queue->capacity;
+    queue->size = queue->size - 1;
+    vfp_print_window_size_ch('-',sw_cmd_width);
+    return item;
+}
+//___________________________________________________________________________________
+
+//---------------------------------Queue Front Function -----------------------------------
+int ifp_queue_front(struct Queue* queue)
+{
+    if (ifp_is_empty_queue(queue))
+    {
+        printf("Sırada bekleyen kimse yok. Kuyruk boş.\n");
+        vfp_print_window_size_ch('-',sw_cmd_width);
+        return INT_MIN;
+    }
+    vfp_print_window_size_ch('-',sw_cmd_width);
     return queue->array[queue->front];
 }
 //___________________________________________________________________________________
@@ -673,13 +692,17 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_kuyruk_giris,"3"))
 		{
-		    vf_enqueue(queue);
+		    vfp_enqueue(queue);
 		}
 		else if(ifp_is_it_equal(cp_kuyruk_giris,"4"))
 		{
+		    int iv_dequeue_value=ifp_dequeue(queue);
+		    printf("%d elemanının kuyrukta işi bitmiştir.\n");
 		}
 		else if(ifp_is_it_equal(cp_kuyruk_giris,"5"))
 		{
+		    int iv_queue_front= ifp_queue_front(queue);
+		    printf("Kuyrukta bekleyen sıradaki eleman %d\n",iv_queue_front);
 		}
 		else if(ifp_is_it_equal(cp_kuyruk_giris,"6"))
 		{
