@@ -295,27 +295,36 @@ void vfp_add_linked_list(struct linked_list * root)
 
 //-------------------------------Delete Linked List-----------------------------------
 // Delete a node
-void vfp_delete_linked_elements(struct linked_list * head_ref, int key) {
-  struct linked_list *temp = head_ref, *prev;
+void vfp_delete_linked_elements(struct linked_list * head_ref) {
+ 
+    char cv_del_value[10];
+    printf("Silinecek elemanı girin:");
+    fgets(cv_del_value,10,stdin);
+    vfp_delete_enter_char(cv_del_value);
+    long int iv_list_del_value = ifp_parameter_to_int(cv_del_value); 
+ 
+    struct linked_list *temp = head_ref, *prev;
 
-  if (temp != NULL && temp->value == key) {
-  head_ref = temp->nextptr;
-  free(temp);
-  return;
-  }
-  // Find the key to be deleted
-  while (temp != NULL && temp->value != key) {
-  prev = temp;
-  temp = temp->nextptr;
-  }
+    if (temp != NULL && temp->value == iv_list_del_value) {
+    head_ref = temp->nextptr;
+    free(temp);
+    return;
+    }
+    // Find the key to be deleted
+    while (temp != NULL && temp->value != iv_list_del_value) {
+    prev = temp;
+    temp = temp->nextptr;
+    }
 
-  // If the key is not present
-  if (temp == NULL) return;
+    // If the key is not present
+    if (temp == NULL) return;
 
-  // Remove the node
-  prev->nextptr = temp->nextptr;
+    // Remove the node
+    prev->nextptr = temp->nextptr;
 
-  free(temp);
+    free(temp);
+    printf("%ld Elemanı başarıyla silindi.\n",iv_list_del_value);
+    vfp_print_window_size_ch('-',sw_cmd_width);    
 }
 //___________________________________________________________________________________
 
@@ -398,7 +407,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"4"))
 		{
-		    vfp_delete_linked_elements(sp_list,15);
+		    vfp_delete_linked_elements(sp_list);
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"5"))
 		{
