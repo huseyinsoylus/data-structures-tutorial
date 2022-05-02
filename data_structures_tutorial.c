@@ -424,6 +424,28 @@ void vfp_delete_linked_list(struct linked_list * root)
 
 //____________________________________LINKED LIST ALL________________________________
 
+//###################################################################################
+
+//____________________________________QUEUE ALL______________________________________
+
+//-------------------------------Delete Linked List-----------------------------------
+void vf_print_queue_menu()
+{
+    vfp_color_change("Yellow");
+    
+    printf("Kuyruk Eğitimine Hoşgeldiniz.\n");
+    vfp_print_window_size_ch('-',sw_cmd_width);
+    printf("1-)Bilgilendirme\n2-)Kuyruk Oluştur\n3-)Sıraya Ekle\n4-)Sıradan Çıkar\n5-)Eleman Güncelle\n6-)Kuyruğu Göster\n7-)Kuyruğu Sil\n8-)Bir Üst Menüye Dön\n");
+    vfp_print_window_size_ch('-',sw_cmd_width);
+    
+    vfp_color_change("");
+}
+
+
+
+
+//____________________________________QUEUE ALL______________________________________
+
 /*
 *
 *
