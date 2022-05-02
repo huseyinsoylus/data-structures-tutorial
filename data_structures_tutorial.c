@@ -193,7 +193,7 @@ void vf_print_linked_list_menu()
     
     printf("Bağlantılı Liste Eğitimine Hoşgeldiniz.\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
-    printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur(10)\n3-)Eleman Ekle(15)\n4-)Eleman Sil\n5-)Eleman Güncelle\n6-)Listeyi Göster\n7-)Listeyi Sil\n8-)Bir Üst Menüye Dön\n");
+    printf("1-)Bilgilendirme\n2-)Bağlantılı Liste Oluştur\n3-)Eleman Ekle\n4-)Eleman Sil\n5-)Eleman Güncelle\n6-)Listeyi Göster\n7-)Listeyi Sil\n8-)Bir Üst Menüye Dön\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
     
     vfp_color_change("");
@@ -263,20 +263,32 @@ void vfp_create_linked_list_rnd(struct linked_list *root){
 
 //-------------------------------Add Linked List-----------------------------------
 
-void vfp_add_linked_list(struct linked_list * root,int add_value)
+void vfp_add_linked_list(struct linked_list * root)
 {
-    struct linked_list *newNode;
-    newNode = (struct linked_list*)malloc(sizeof(struct linked_list));
-    newNode->value = add_value;
-    newNode->nextptr = NULL;
+    char cv_add_value[10];
+    printf("Eklenecek elemanı girin:");
+    fgets(cv_add_value,10,stdin);
+    vfp_delete_enter_char(cv_add_value);
+    long int iv_list_add_value = ifp_parameter_to_int(cv_add_value);
+    
+    
+    struct linked_list *new_node;
+    if(new_node == NULL)
+    {
+        perror("Fail: The new_node structure pointer is not allocated.\n");
+    }
+    new_node = (struct linked_list*)malloc(sizeof(struct linked_list));
+    new_node->value = iv_list_add_value;
+    new_node->nextptr = NULL;
     
     struct linked_list *temp = root;
     while(temp->nextptr != NULL){
     temp = temp->nextptr;
     }
 
-    temp->nextptr = newNode;
-    
+    temp->nextptr = new_node;
+    printf("Eleman bağlı listeye başarı ile eklendi.\n");
+    vfp_print_window_size_ch('-',sw_cmd_width);
 }
 //___________________________________________________________________________________
 
@@ -382,7 +394,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"3"))
 		{
-		    vfp_add_linked_list(sp_list,15);
+		    vfp_add_linked_list(sp_list);
 		}
 		else if(ifp_is_it_equal(cp_bagli_liste_giris,"4"))
 		{
