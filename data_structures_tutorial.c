@@ -467,6 +467,29 @@ void vf_print_queue_info()
 }
 //___________________________________________________________________________________
 
+//---------------------------------Initialize Queue -----------------------------------
+struct Queue* sf_create_queue()
+{
+    char cv_unsig_capacity_value[10];
+    printf("Kuyruk kapasitesini girin:");
+    fgets(cv_unsig_capacity_value,10,stdin);
+    vfp_delete_enter_char(cv_unsig_capacity_value);
+    unsigned iv_unsig_capacity_value = ifp_parameter_to_int(cv_unsig_capacity_value);
+    
+    struct Queue* queue = (struct Queue*)malloc(
+        sizeof(struct Queue));
+    queue->capacity = iv_unsig_capacity_value;
+    queue->front = queue->size = 0;
+ 
+    // This is important, see the enqueue
+    queue->rear = iv_unsig_capacity_value - 1;
+    queue->array = (int*)malloc(queue->capacity * sizeof(int));
+    printf("Kuyruk %d kapasitesi ile başarıyla oluşturuldu.\n",iv_unsig_capacity_value);
+    vfp_print_window_size_ch('-',sw_cmd_width);
+    return queue;
+}
+//___________________________________________________________________________________
+
 
 
 //____________________________________QUEUE ALL______________________________________
@@ -579,6 +602,7 @@ int main(int argc, char * argv[])
 	}
 	else if(ifp_is_it_equal(giv_girdi,"2"))
 	{
+	    struct Queue* queue;
 	    
 	    vf_print_queue_menu();
 	    char * cp_kuyruk_giris = (char*)malloc(sizeof(char)*10);
@@ -600,7 +624,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_kuyruk_giris,"2"))
 		{
-		    
+		    queue=sf_create_queue();
 		}
 		else if(ifp_is_it_equal(cp_kuyruk_giris,"3"))
 		{
