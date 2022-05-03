@@ -680,7 +680,8 @@ void vfp_push_stack(struct stack_node** root)
     struct stack_node* stackNode = new_node(iv_add_stack_value);
     stackNode->next = *root;
     *root = stackNode;
-    printf("%d pushed to stack\n", iv_add_stack_value);
+    printf("%d Eleman yığıta eklendi\n", iv_add_stack_value);
+    vfp_print_window_size_ch('-',sw_cmd_width);
 }
 //___________________________________________________________________________________
 
