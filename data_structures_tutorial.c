@@ -940,7 +940,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_stack_giris,"6"))
 		{
-		    
+		    vfp_delete_stack(root);
 		}
 		else if(ifp_is_it_equal(cp_stack_giris,"7"))
 		{
