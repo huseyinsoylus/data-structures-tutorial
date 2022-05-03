@@ -618,11 +618,11 @@ struct stack_node {
 //___________________________________________________________________________________
 
 //---------------------------------Print Stack MENU-----------------------------------
-void vf_print_queue_menu()
+void vf_print_stack_menu()
 {
     vfp_color_change("Yellow");
     
-    printf("Kuyruk Eğitimine Hoşgeldiniz.\n");
+    printf("Yığıt Eğitimine Hoşgeldiniz.\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
     printf("1-)Bilgilendirme\n2-)Yığıt Oluştur\n3-)Push\n4-)Pop\n5-)Peek\n6-)Yığıtı Sil\n8-)Bir Üst Menüye Dön\nEğitimi sonlandırmak için exit - Exit yazınız.\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
@@ -806,7 +806,58 @@ int main(int argc, char * argv[])
 	}
 	else if(ifp_is_it_equal(giv_girdi,"3"))
 	{
-	    printf("Yığıt Liste Eğitimine Hoşgeldiniz.\n");
+	    struct stack_node* root;  
+	    vf_print_stack_menu();
+	    char * cp_stack_giris = (char*)malloc(sizeof(char)*10);
+	    
+	    while(1)
+	    {
+	    //printf("1-)Bilgilendirme\n2-)Kuyruk Oluştur\n3-)Sıraya Ekle\n4-)Sıradan Çıkar\n5-)Sıradaki Elemanı Göster\n6-)Sondaki Elemanı Göster\n7-)Kuyruğu Sil\n8-)Bir Üst Menüye Dön\n");
+	        fflush(stdin);
+	    	printf("Seçeneği girin:");
+	        fgets(cp_stack_giris,10,stdin);
+	        vfp_delete_enter_char(cp_stack_giris);
+	        
+		/*print '-'*/
+	        vfp_print_window_size_ch('-',sw_cmd_width);
+	        
+	        if(ifp_is_it_equal(cp_stack_giris,"1"))
+		{
+		}
+		else if(ifp_is_it_equal(cp_stack_giris,"2"))
+		{
+		}
+		else if(ifp_is_it_equal(cp_stack_giris,"3"))
+		{
+		}
+		else if(ifp_is_it_equal(cp_stack_giris,"4"))
+		{
+		}
+		else if(ifp_is_it_equal(cp_stack_giris,"5"))
+		{
+		}
+		else if(ifp_is_it_equal(cp_stack_giris,"6"))
+		{
+		}
+		else if(ifp_is_it_equal(cp_stack_giris,"7"))
+		{
+		}
+		else if(ifp_is_it_equal(cp_stack_giris,"8"))
+		{
+		    vf_print_education_list();
+		    break;	
+		}
+		else if(ifp_is_it_equal(cp_stack_giris,"exit") || ifp_is_it_equal(cp_stack_giris,"Exit"))
+		{
+		    printf("Programdan çıkılıyor. İyi günler dileriz.\n");
+		    _Exit(0);
+		}
+		else
+		{
+		    printf("Giriş yaptığınız değer geçersizdir.\n");
+		    vfp_print_window_size_ch('-',sw_cmd_width);
+		}
+	    }
 	}
 	else if(ifp_is_it_equal(giv_girdi,"4"))
 	{
