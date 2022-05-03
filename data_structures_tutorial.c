@@ -929,6 +929,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_stack_giris,"5"))
 		{
+		    ifp_stack_peek(root);
 		}
 		else if(ifp_is_it_equal(cp_stack_giris,"6"))
 		{
