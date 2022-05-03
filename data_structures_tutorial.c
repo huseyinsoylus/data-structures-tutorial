@@ -713,6 +713,7 @@ int ifp_stack_peek(struct stack_node* root)
     if (ifp_is_empty_stack(root))
     {
         printf("Yığıt boş.\n");
+        vfp_print_window_size_ch('-',sw_cmd_width);
     }
     else
     {
