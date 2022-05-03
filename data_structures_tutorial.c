@@ -652,12 +652,27 @@ void vfp_create_stack(struct stack_node * stack)
 //___________________________________________________________________________________
 
 //--------------------------------Is Empty Stack Function----------------------------
-int is_empty_stack(struct StackNode* root)
+int ifp_is_empty_stack(struct stack_node* root)
 {
     return !root;
 }
 //___________________________________________________________________________________
 
+//--------------------------------Push Stack Function--------------------------------
+void vfp_push_stack(struct stack_node** root)
+{
+    char cv_stack_add_value[10];
+    printf("Yığıta atılacak elemanı girin:");
+    fgets(cv_stack_add_value,10,stdin);
+    vfp_delete_enter_char(cv_stack_add_value);
+    int iv_add_stack_value = ifp_parameter_to_int(cv_stack_add_value);
+    
+    struct stack_node* stackNode = new_node(iv_add_stack_value);
+    stackNode->next = *root;
+    *root = stackNode;
+    printf("%d pushed to stack\n", iv_add_stack_value);
+}
+//___________________________________________________________________________________
 
 //____________________________________STACK ALL______________________________________
 
