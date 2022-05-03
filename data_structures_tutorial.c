@@ -684,6 +684,28 @@ void vfp_push_stack(struct stack_node** root)
 }
 //___________________________________________________________________________________
 
+//-----------------------------------Pop Stack Function------------------------------
+
+void vfp_pop_stack(struct stack_node** root)
+{
+    if (ifp_is_empty_stack(*root))
+    {
+        printf("Stack boş.\n");
+    }
+    else
+    {
+        struct stack_node* temp = *root;
+	*root = (*root)->next;
+	int popped = temp->data;
+	free(temp);
+	printf("%d elemanı yığıttan çıkarıldı.\n",popped);
+	vfp_print_window_size_ch('-',sw_cmd_width);
+    }
+    
+}
+
+//___________________________________________________________________________________
+
 //____________________________________STACK ALL______________________________________
 
 /*
