@@ -845,6 +845,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_stack_giris,"2"))
 		{
+		   vfp_create_stack(root);
 		}
 		else if(ifp_is_it_equal(cp_stack_giris,"3"))
 		{
