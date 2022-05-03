@@ -632,7 +632,7 @@ void vf_print_stack_menu()
 //___________________________________________________________________________________
 
 
-//----------------------------------Print Queue Info Func----------------------
+//----------------------------------Print Queue Info Func----------------------------
 void vf_print_stacks_info()
 {
     printf("Stack Bilgilendirme:\n");
@@ -642,6 +642,7 @@ void vf_print_stacks_info()
 }
 //___________________________________________________________________________________
 
+//----------------------------------Create Stack Function----------------------------
 void vfp_create_stack(struct stack_node * stack)
 {
     stack=malloc(sizeof(struct stack_node*));
@@ -649,6 +650,14 @@ void vfp_create_stack(struct stack_node * stack)
     vfp_print_window_size_ch('-',sw_cmd_width);
 }
 //___________________________________________________________________________________
+
+//--------------------------------Is Empty Stack Function----------------------------
+int is_empty_stack(struct StackNode* root)
+{
+    return !root;
+}
+//___________________________________________________________________________________
+
 
 //____________________________________STACK ALL______________________________________
 
