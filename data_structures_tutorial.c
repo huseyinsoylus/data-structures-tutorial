@@ -658,6 +658,16 @@ int ifp_is_empty_stack(struct stack_node* root)
 }
 //___________________________________________________________________________________
 
+//--------------------------------New Node Stack Function----------------------------
+struct stack_node* new_node(int data)
+{
+    struct stack_node* stackNode =(struct stack_node*)malloc(sizeof(struct stack_node));
+    stackNode->data = data;
+    stackNode->next = NULL;
+    return stackNode;
+}
+//___________________________________________________________________________________
+
 //--------------------------------Push Stack Function--------------------------------
 void vfp_push_stack(struct stack_node** root)
 {
@@ -854,7 +864,7 @@ int main(int argc, char * argv[])
 	    
 	    while(1)
 	    {
-	    //printf("1-)Bilgilendirme\n2-)Kuyruk Oluştur\n3-)Sıraya Ekle\n4-)Sıradan Çıkar\n5-)Sıradaki Elemanı Göster\n6-)Sondaki Elemanı Göster\n7-)Kuyruğu Sil\n8-)Bir Üst Menüye Dön\n");
+	    //printf("1-)Bilgilendirme\n2-)Yığıt Oluştur\n3-)Push\n4-)Pop\n5-)Peek\n6-)Yığıtı Sil\n8-)Bir Üst Menüye Dön\nEğitimi sonlandırmak için exit - Exit yazınız.\n");
 	        fflush(stdin);
 	    	printf("Seçeneği girin:");
 	        fgets(cp_stack_giris,10,stdin);
@@ -873,6 +883,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_stack_giris,"3"))
 		{
+		    vfp_push_stack(&root);
 		}
 		else if(ifp_is_it_equal(cp_stack_giris,"4"))
 		{
