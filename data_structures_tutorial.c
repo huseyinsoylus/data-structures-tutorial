@@ -833,6 +833,7 @@ int main(int argc, char * argv[])
 	        
 	        if(ifp_is_it_equal(cp_stack_giris,"1"))
 		{
+		    vf_print_stacks_info();
 		}
 		else if(ifp_is_it_equal(cp_stack_giris,"2"))
 		{
