@@ -943,9 +943,6 @@ int main(int argc, char * argv[])
 		{
 		    vfp_delete_stack(root);
 		}
-		else if(ifp_is_it_equal(cp_stack_giris,"7"))
-		{
-		}
 		else if(ifp_is_it_equal(cp_stack_giris,"8"))
 		{
 		    vf_print_education_list();
