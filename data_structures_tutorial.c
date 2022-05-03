@@ -707,6 +707,21 @@ void vfp_pop_stack(struct stack_node** root)
 
 //___________________________________________________________________________________
 
+//-----------------------------------Peek Stack Function------------------------------
+int ifp_stack_peek(struct stack_node* root)
+{
+    if (ifp_is_empty_stack(root))
+    {
+        printf("Yığıt boş.\n");
+    }
+    else
+    {
+        return 
+        printf("Yığıtın en üstündeki eleman --> %d\n",root->data);
+    }
+}
+//___________________________________________________________________________________
+
 //____________________________________STACK ALL______________________________________
 
 /*
@@ -910,6 +925,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_stack_giris,"4"))
 		{
+		    vfp_pop_stack(&root);
 		}
 		else if(ifp_is_it_equal(cp_stack_giris,"5"))
 		{
