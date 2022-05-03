@@ -646,7 +646,7 @@ void vf_print_stacks_info()
 void vfp_create_stack(struct stack_node * stack)
 {
     stack=malloc(sizeof(struct stack_node*));
-    printf("Stack başarıyla oluştutuldu.\n");
+    printf("Yığıt başarıyla oluştutuldu.\n");
     vfp_print_window_size_ch('-',sw_cmd_width);
 }
 //___________________________________________________________________________________
