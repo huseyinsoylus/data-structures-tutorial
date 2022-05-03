@@ -642,6 +642,14 @@ void vf_print_stacks_info()
 }
 //___________________________________________________________________________________
 
+void vfp_create_stack(struct stack_node * stack)
+{
+    stack=malloc(sizeof(struct stack_node*));
+    printf("Stack bellek alanı ayrıldı.\n");
+    vfp_print_window_size_ch('-',sw_cmd_width);
+}
+//___________________________________________________________________________________
+
 //____________________________________STACK ALL______________________________________
 
 /*
@@ -816,7 +824,7 @@ int main(int argc, char * argv[])
 	}
 	else if(ifp_is_it_equal(giv_girdi,"3"))
 	{
-	    struct stack_node* root;  
+	    struct stack_node* root=NULL;  
 	    vf_print_stack_menu();
 	    char * cp_stack_giris = (char*)malloc(sizeof(char)*10);
 	    
