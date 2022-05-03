@@ -605,6 +605,7 @@ void vfp_queue_rear(struct Queue* queue)
 
 //____________________________________QUEUE ALL______________________________________
 
+//###################################################################################
 
 //____________________________________STACK ALL______________________________________
 
@@ -616,6 +617,19 @@ struct stack_node {
 };
 //___________________________________________________________________________________
 
+//---------------------------------Print Stack MENU-----------------------------------
+void vf_print_queue_menu()
+{
+    vfp_color_change("Yellow");
+    
+    printf("Kuyruk Eğitimine Hoşgeldiniz.\n");
+    vfp_print_window_size_ch('-',sw_cmd_width);
+    printf("1-)Bilgilendirme\n2-)Yığıt Oluştur\n3-)Push\n4-)Pop\n5-)Peek\n6-)Yığıtı Sil\n8-)Bir Üst Menüye Dön\nEğitimi sonlandırmak için exit - Exit yazınız.\n");
+    vfp_print_window_size_ch('-',sw_cmd_width);
+    
+    vfp_color_change("");
+}
+//___________________________________________________________________________________
 
 
 //____________________________________STACK ALL______________________________________
