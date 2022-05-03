@@ -722,6 +722,13 @@ int ifp_stack_peek(struct stack_node* root)
 }
 //___________________________________________________________________________________
 
+void vfp_delete_stack(struct stack_node * root)
+{
+    root = NULL;
+    printf("Yığıt silindi.\n");
+    vfp_print_window_size_ch('-',sw_cmd_width);
+}
+
 //____________________________________STACK ALL______________________________________
 
 /*
@@ -933,6 +940,7 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_stack_giris,"6"))
 		{
+		    
 		}
 		else if(ifp_is_it_equal(cp_stack_giris,"7"))
 		{
