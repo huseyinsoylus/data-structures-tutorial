@@ -632,6 +632,16 @@ void vf_print_stack_menu()
 //___________________________________________________________________________________
 
 
+//----------------------------------Print Queue Info Func----------------------
+void vf_print_stacks_info()
+{
+    printf("Stack Bilgilendirme:\n");
+    printf("Stack, doğrusal artan bir veri yapısı olup; Insert (push) ve Delete (pop) işlemleri, Listenin sadece “top” adı verilen bir ucunda yani stack’in en üstünden gerçekleştirilir. Bu nedenle stack Son Giren İlk Çıkar (Last In First Out-LIFO) mantığı ile işleyen bir veri yapısıdır.\n");
+    vfp_print_window_size_ch('-',sw_cmd_width);
+
+}
+//___________________________________________________________________________________
+
 //____________________________________STACK ALL______________________________________
 
 /*
@@ -874,4 +884,4 @@ int main(int argc, char * argv[])
 	    vfp_print_window_size_ch('-',sw_cmd_width);
 	}
     }
-}
+}														
