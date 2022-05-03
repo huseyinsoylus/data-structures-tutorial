@@ -508,65 +508,97 @@ int ifp_is_empty_queue(struct Queue* queue)
 //---------------------------------Enqueue Function -----------------------------------
 void vfp_enqueue(struct Queue* queue)
 {
-    char cv_que_add_value[10];
-    printf("Kuyruğa eklenecek elemanı girin:");
-    fgets(cv_que_add_value,10,stdin);
-    vfp_delete_enter_char(cv_que_add_value);
-    unsigned iv_add_que_value = ifp_parameter_to_int(cv_que_add_value);
     
-    if (ifp_is_full_queue(queue))
-        return;
-    queue->rear = (queue->rear + 1)
-                  % queue->capacity;
-    queue->array[queue->rear] = iv_add_que_value;
-    queue->size = queue->size + 1;
-    printf("%d Kuyruğa alındı.\n", iv_add_que_value);
-    vfp_print_window_size_ch('-',sw_cmd_width);
+    if(queue == NULL)
+    {
+        printf("Kuyruk oluşturulmamış. Oluşturmak için 2 Komutu ile devam edin.\n");
+        vfp_print_window_size_ch('-',sw_cmd_width);
+    }
+    else
+    {
+	char cv_que_add_value[10];
+	printf("Kuyruğa eklenecek elemanı girin:");
+	fgets(cv_que_add_value,10,stdin);
+	vfp_delete_enter_char(cv_que_add_value);
+	unsigned iv_add_que_value = ifp_parameter_to_int(cv_que_add_value);
+
+	if (ifp_is_full_queue(queue))
+	return;
+	queue->rear = (queue->rear + 1)
+		  % queue->capacity;
+	queue->array[queue->rear] = iv_add_que_value;
+	queue->size = queue->size + 1;
+	printf("%d Kuyruğa alındı.\n", iv_add_que_value);
+	vfp_print_window_size_ch('-',sw_cmd_width);
+    }
+    
+
 }
 //___________________________________________________________________________________
 
 //---------------------------------Dequeue Function -----------------------------------
-int ifp_dequeue(struct Queue* queue)
+void vfp_dequeue(struct Queue* queue)
 {
-    if (ifp_is_empty_queue(queue))
+    if(queue == NULL)
     {
-        printf("Sırada bekleyen kimse yok. Kuyruk boş.\n");
-        return INT_MIN;
+        printf("Kuyruk oluşturulmamış. Oluşturmak için 2 Komutu ile devam edin.\n");
+        vfp_print_window_size_ch('-',sw_cmd_width);
     }
-    int item = queue->array[queue->front];
-    queue->front = (queue->front + 1)
-                   % queue->capacity;
-    queue->size = queue->size - 1;
-    vfp_print_window_size_ch('-',sw_cmd_width);
-    return item;
+    else
+    {
+	if (ifp_is_empty_queue(queue))
+	{
+	    printf("Sırada bekleyen kimse yok. Kuyruk boş.\n");
+	}
+	int item = queue->array[queue->front];
+	queue->front = (queue->front + 1)
+		   % queue->capacity;
+	queue->size = queue->size - 1;
+	printf("%d elemanının kuyrukta işi bitmiştir.\n",item);
+	vfp_print_window_size_ch('-',sw_cmd_width);
+    }
 }
 //___________________________________________________________________________________
 
 //---------------------------------Queue Front Function -----------------------------------
-int ifp_queue_front(struct Queue* queue)
+void vfp_queue_front(struct Queue* queue)
 {
-    if (ifp_is_empty_queue(queue))
+    if(queue == NULL)
     {
-        printf("Sırada bekleyen kimse yok. Kuyruk boş.\n");
+        printf("Kuyruk oluşturulmamış. Oluşturmak için 2 Komutu ile devam edin.\n");
         vfp_print_window_size_ch('-',sw_cmd_width);
-        return INT_MIN;
     }
-    vfp_print_window_size_ch('-',sw_cmd_width);
-    return queue->array[queue->front];
+    else
+    {
+	if (ifp_is_empty_queue(queue))
+	{
+	    printf("Sırada bekleyen kimse yok. Kuyruk boş.\n");
+	    vfp_print_window_size_ch('-',sw_cmd_width);
+	}
+	vfp_print_window_size_ch('-',sw_cmd_width);
+	printf("Kuyrukta bekleyen sıradaki eleman %d\n",queue->array[queue->front]);
+    }
 }
 //___________________________________________________________________________________
 
 //---------------------------------Queue Rear Function -----------------------------------
-int ifp_queue_rear(struct Queue* queue)
+void vfp_queue_rear(struct Queue* queue)
 {
-    if (ifp_is_empty_queue(queue))
+    if(queue == NULL)
     {
-        printf("Sırada bekleyen kimse yok. Kuyruk boş.\n");
+        printf("Kuyruk oluşturulmamış. Oluşturmak için 2 Komutu ile devam edin.\n");
         vfp_print_window_size_ch('-',sw_cmd_width);
-        return INT_MIN;
     }
-    vfp_print_window_size_ch('-',sw_cmd_width);
-    return queue->array[queue->rear];
+    else
+    {
+	if (ifp_is_empty_queue(queue))
+	{
+	    printf("Sırada bekleyen kimse yok. Kuyruk boş.\n");
+	    vfp_print_window_size_ch('-',sw_cmd_width);
+	}
+	printf("Kuyruğun sonundaki eleman %d\n",queue->array[queue->rear]);
+	vfp_print_window_size_ch('-',sw_cmd_width);
+    }
 }
 //___________________________________________________________________________________
 
@@ -681,7 +713,7 @@ int main(int argc, char * argv[])
 	}
 	else if(ifp_is_it_equal(giv_girdi,"2"))
 	{
-	    struct Queue* queue;
+	    struct Queue* queue;  
 	    
 	    vf_print_queue_menu();
 	    char * cp_kuyruk_giris = (char*)malloc(sizeof(char)*10);
@@ -711,19 +743,20 @@ int main(int argc, char * argv[])
 		}
 		else if(ifp_is_it_equal(cp_kuyruk_giris,"4"))
 		{
-		    int iv_dequeue_value=ifp_dequeue(queue);
-		    printf("%d elemanının kuyrukta işi bitmiştir.\n");
+		    vfp_dequeue(queue);
 		}
 		else if(ifp_is_it_equal(cp_kuyruk_giris,"5"))
 		{
-		    int iv_queue_front= ifp_queue_front(queue);
-		    printf("Kuyrukta bekleyen sıradaki eleman %d\n",iv_queue_front);
+		    vfp_queue_front(queue);
 		}
 		else if(ifp_is_it_equal(cp_kuyruk_giris,"6"))
 		{
+		    vfp_queue_rear(queue);
 		}
 		else if(ifp_is_it_equal(cp_kuyruk_giris,"7"))
 		{
+		    queue=NULL;
+		    printf("Kuyruk silindi.\n");
 		}
 		else if(ifp_is_it_equal(cp_kuyruk_giris,"8"))
 		{
@@ -761,6 +794,4 @@ int main(int argc, char * argv[])
 	    vfp_print_window_size_ch('-',sw_cmd_width);
 	}
     }
-    
-
 }
