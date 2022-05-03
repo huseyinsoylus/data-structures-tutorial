@@ -716,7 +716,6 @@ int ifp_stack_peek(struct stack_node* root)
     }
     else
     {
-        return 
         printf("Yığıtın en üstündeki eleman --> %d\n",root->data);
         vfp_print_window_size_ch('-',sw_cmd_width);
     }
